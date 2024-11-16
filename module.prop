@@ -1,7 +1,6 @@
 id=weebu-addon
 name=Weebu Addon
-version=v1.0
+version=v1.0-global-mnt
 versionCode=1
 author=ozipoetra
-description=Make weebu to your phone
-updateJson=https://raw.githubusercontent.com/ozipoetra/weebu/main/update.json
+description=Make weebu to your phone. Modified to be mounted globally.
