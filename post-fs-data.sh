@@ -19,15 +19,14 @@ SUSFS_BIN=/data/adb/ksu/bin/ksu_susfs
 mkdir $basefolder/$modid
 ${SUSFS_BIN} add_sus_path $basefolder/$modid
 
-cd $MODDIR
+cd $MODDIR/system
 # remove symlinks, remove system/product -> ../product shit
-# this is optional, but for the purposes of this demo module, I DO NOT need this.
-# comment this out for something like iconify, credits to ham1do
-find ./ -maxdepth 2 -type l -delete
+# this is optional
+# find ./ -maxdepth 2 -type l -delete
 
 for i in $(ls -d */*); do
 	mkdir -p $basefolder/$modid/$i
-	mount --bind $MODDIR/$i $basefolder/$modid/$i
+	mount --bind $MODDIR/system/$i $basefolder/$modid/$i
 	mount -t overlay -o "lowerdir=$basefolder/$modid/$i:/$i" overlay /$i
 	${SUSFS_BIN} add_sus_mount /$i
 done
