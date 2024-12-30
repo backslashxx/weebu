@@ -23,7 +23,9 @@ ${SUSFS_BIN} add_sus_path $basefolder/$modid
 # on overlayfs, moddir/system/product is symlinked to moddir/product
 # on magic, moddir/product it symlinked to moddir/system/product
 BASE_DIR=$MODDIR
-[ "$KSU_MAGIC_MOUNT" = "true" ] && BASE_DIR="$MODDIR/system"
+if [ "$KSU_MAGIC_MOUNT" = "true" ] || [ "$APATCH_BIND_MOUNT" = "true" ]; then
+	BASE_DIR="$MODDIR/system"
+fi
 cd $BASE_DIR
 
 # remove symlinks, remove system/product -> ../product shit
